@@ -1,62 +1,128 @@
+
 # CodeAlpha Docker Web Server
 
+A containerized web server built with Nginx and Docker as part of the CodeAlpha DevOps Internship.
+
 ## Project Overview
-This project demonstrates how to deploy a web server inside a Docker container using Nginx.
 
-It was developed as part of the CodeAlpha DevOps Internship.
-
-## Objectives
-- Understand Docker containerization.
-- Build a custom Docker image.
-- Deploy a web server inside a container.
-- Map container ports to the host machine.
-- Verify container status and HTTP responses.
+This project demonstrates how to build a Docker image and deploy a custom HTML and CSS webpage inside an Nginx container.
 
 ## Technologies Used
+
 - Docker Desktop
 - Dockerfile
-- Nginx (Alpine Linux image)
+- Nginx (Alpine image)
 - HTML and CSS
+- Git and GitHub
 - Windows 11
 
 ## Project Structure
+
 ```text
 CodeAlpha_Docker_WebServer/
 ├── Dockerfile
 ├── index.html
-└── README.md
+├── README.md
+└── screenshots/
+    ├── website.png
+    └── docker-container.png
 ```
 
-## Implementation
+## Prerequisites
 
-### Build the Docker Image
+- Windows 11
+- Docker Desktop installed and running
+- Git installed
+- A web browser
+
+## Screenshots
+
+### Running Website
+
+![CodeAlpha Docker Web Server](screenshots/website.png)
+
+### Running Docker Container
+
+![Docker Container Status](screenshots/docker-container.png)
+
+## How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ambarish158/CodeAlpha_Docker_WebServer.git
+cd CodeAlpha_Docker_WebServer
+```
+
+### 2. Build the Docker Image
+
 ```bash
 docker build -t codealpha-webserver .
 ```
 
-### Run the Container
+### 3. Run the Container
+
 ```bash
 docker run -d -p 8080:80 --name codealpha-webserver codealpha-webserver
 ```
 
-### Check Running Containers
+### 4. Open the Website
+
+Visit:
+
+http://localhost:8080
+
+### 5. Verify the Container
+
 ```bash
 docker ps
 ```
 
-### Test the Web Server
-Open http://localhost:8080 in a browser.
+### 6. Test the HTTP Response
 
-Alternatively, run:
 ```bash
 curl.exe -I http://localhost:8080
 ```
 
-## Expected Result
-The custom HTML webpage is served by Nginx inside a Docker container. The web server should return an HTTP 200 OK response when operating correctly.
+A successful response should include `HTTP/1.1 200 OK`.
+
+## Troubleshooting
+
+### Container Name Already in Use
+
+If the container already exists, start it with:
+
+```bash
+docker start codealpha-webserver
+```
+
+### Port 8080 Already in Use
+
+Choose a different host port, such as 8081:
+
+```bash
+docker run -d -p 8081:80 --name codealpha-webserver-2 codealpha-webserver
+```
+
+Then open http://localhost:8081.
+
+### Docker Engine Not Running
+
+Open Docker Desktop and wait for the engine to start before running Docker commands.
 
 ## Learning Outcomes
-- Docker image creation and container execution.
-- Basic web server deployment.
-- Host-to-container port mapping.
-- Container verification and troubleshooting.
+
+- Building custom Docker images
+- Containerizing a web server
+- Configuring host-to-container port mapping
+- Running and inspecting containers
+- Testing HTTP responses
+- Managing project source code with Git and GitHub
+
+## Author
+
+Ambarish
+
+## GitHub Repository
+
+https://github.com/ambarish158/CodeAlpha_Docker_WebServer
